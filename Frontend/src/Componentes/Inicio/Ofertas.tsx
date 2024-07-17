@@ -4,7 +4,7 @@ export default function Ofertas() {
     return(
         <div className="mt-16">
             <h2 className="flex justify-center uppercase font-bold text-4xl mb-14">nuestors combos</h2>
-            <div className="bg-blue-600 m-8 mx-3 rounded-md">
+            <div className="bg-blue-500 m-8 mx-3 rounded-md">
                 <div className="flex gap-5 p-4 overflow-x-auto scrollbar-custom">
                     {listaOfertas.map((objeto, index) => (
                     <div className="flex flex-none h-auto bg-white p-4 rounded-md min-w-max" key={index}>

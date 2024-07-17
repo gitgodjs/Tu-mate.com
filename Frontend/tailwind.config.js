@@ -5,7 +5,12 @@ module.exports = {
     "./public/index.html",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'custom-yellow': 'rgb(234, 179, 8)',
+        'custom-white': 'rgba(239, 230, 248, 0.926)',
+      },
+    },
   },
   plugins: [],
 }

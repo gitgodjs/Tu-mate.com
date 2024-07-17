@@ -200,7 +200,7 @@ ul {
     
     .presentacion h3 {
         font-size: 2.5rem;
-        color: rgb(232, 191, 10);
+        color: rgba(239, 230, 248, 0.926);
     }
     
     .presentacion p {
@@ -208,8 +208,6 @@ ul {
         width: 60%;
     }
 }
-
-
 
 /* Estilo para el scrollbar */
 .scrollbar-custom::-webkit-scrollbar {
