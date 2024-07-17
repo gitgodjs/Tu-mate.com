@@ -20,6 +20,9 @@ export default function Ofertas() {
                 </div>
               ))}
             </div>
+            <div>
+                <p className="uppercase bg-red-500">tailwind</p>
+            </div>
         </div>
     )
 }
