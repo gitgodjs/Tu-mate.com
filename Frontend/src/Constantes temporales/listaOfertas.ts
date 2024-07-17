@@ -16,7 +16,25 @@ const listaOfertas = [
       descripcion: ["Imperial", "Termo", "Bombilla pico de loro"],
       precio: "$69.000",
       imagen: "https://matesrosario.com/wp-content/uploads/2020/05/Captura-de-pantalla-2024-05-22-115448.png"
-    }
+    },
+    {
+      titulo: "Solitario",
+      descripcion: ["Imperial", "Termo", "Bombilla pico de loro"],
+      precio: "$69.000",
+      imagen: "https://matesrosario.com/wp-content/uploads/2020/05/Captura-de-pantalla-2024-05-22-115448.png"
+    },
+    {
+      titulo: "Solitario",
+      descripcion: ["Imperial", "Termo", "Bombilla pico de loro"],
+      precio: "$69.000",
+      imagen: "https://matesrosario.com/wp-content/uploads/2020/05/Captura-de-pantalla-2024-05-22-115448.png"
+    },
+    {
+      titulo: "Solitario",
+      descripcion: ["Imperial", "Termo", "Bombilla pico de loro"],
+      precio: "$69.000",
+      imagen: "https://matesrosario.com/wp-content/uploads/2020/05/Captura-de-pantalla-2024-05-22-115448.png"
+    },
 ];
 
 export default listaOfertas;

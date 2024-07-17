@@ -209,63 +209,16 @@ ul {
     }
 }
 
-/* Cartel de Ofertas*/
-.cartel-ofertas {
-    background-color: rgb(47, 106, 232);
-    margin: 2rem .5rem;
-    border-radius: 5px;
-    
-}
 
-.contenido-oferta {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-}
 
-.oferta {
-    display: flex;
-    background-color: rgb(255, 255, 255);
-    padding: 10px;
-    border-radius: 15px;
-}
-
-.oferta-descripcion {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    font-size: 20px;
-}
-
-.oferta-descripcion {
-    font-size: 18px;
-    font-family: "Recursive", sans-serif;
-    position: relative;
-    gap: 3px;
-}
-
-.oferta-descripcion button {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    margin: 10px;
-    border: none;
-    font-family: "Recursive", sans-serif;
-    background-color: rgb(244, 171, 13);
-    font-size: 18px;
-    padding: 10px;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: .5s;
-}
-
-.oferta-descripcion button:hover {
-    background-color: rgb(223, 184, 6);
-    border-radius: 5px;
-}
-
-.oferta .oferta-imagen img {
-    width: 200px;
-    height: 200px;
-    border-radius: 15px;
-}
+/* Estilo para el scrollbar */
+.scrollbar-custom::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background: #80a6e7; 
+    border-radius: 4px;
+  }
+  
