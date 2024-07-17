@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Inicio from './Paginas/Inicio';
-import Header from './Componentes/Header';
+import Header from './Componentes/Fijos/Header';
 
 function App() {
   return (

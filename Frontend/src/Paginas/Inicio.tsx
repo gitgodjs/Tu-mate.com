@@ -1,8 +1,11 @@
+import Ofertas from "../Componentes/Fijos/Ofertas";
+import ImagenesPresentacion from "../Componentes/Inicio/ImagenesPresentacion";
+
 export default function Inicio() {
     return (
         <>
-            <h1>Hola!!</h1>
-            <h2>Mundo!!!</h2>
+            <ImagenesPresentacion />
+            <Ofertas />
         </>
     );
 }
