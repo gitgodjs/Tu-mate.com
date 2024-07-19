@@ -66,6 +66,10 @@ ul {
     display: none;
 }
 
+nav p {
+    display: none;
+}
+
 #menu-toggle {
     display: none;
 }
@@ -94,13 +98,18 @@ ul {
         position: absolute;
         left: 0;
         top: 0;
-        background-color: rgb(44, 120, 207);
+        background-color: rgb(24, 67, 148);
         height: 100%;
         width: 200px;
         padding: 15px;
         z-index: 40; 
         flex-direction: column;
         gap: 10px;
+    }
+
+    nav p {
+        display: flex;
+        margin-bottom: 1rem;
     }
 
     ul {
@@ -121,6 +130,7 @@ ul {
         display: flex;
         font: 18px;
     }
+
 }
 
 /* Presentacion */
@@ -163,7 +173,6 @@ ul {
 .presentacion h3 {
     font-size: 3rem;
     letter-spacing: 3px;
-    color: rgb(226, 187, 10);
 }
 
 .presentacion p {
@@ -176,7 +185,7 @@ ul {
     color: white;
     margin: 4rem 0;
     padding: 10px;
-    background-color: rgb(4, 106, 173);
+    background-color: rgb(8, 86, 181);
     width: 40%;
     text-align: center;
     border-radius: 25px;
@@ -184,7 +193,7 @@ ul {
 }
 
 .link-presentacion:hover {
-    background-color: rgb(9, 126, 205);
+    background-color: rgb(6, 57, 153);
     border-radius: 5px;
 }
 
@@ -200,7 +209,6 @@ ul {
     
     .presentacion h3 {
         font-size: 2.5rem;
-        color: rgba(239, 230, 248, 0.926);
     }
     
     .presentacion p {

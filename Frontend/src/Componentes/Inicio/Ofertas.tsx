@@ -4,10 +4,10 @@ export default function Ofertas() {
     return(
         <div className="mt-16">
             <h2 className="flex justify-center uppercase font-bold text-4xl mb-14">nuestors combos</h2>
-            <div className="bg-blue-500 m-8 mx-3 rounded-md">
+            <div className="bg-blue-500 m-8 mx-3 rounded-md w-auto h-auto">
                 <div className="flex gap-5 p-4 overflow-x-auto scrollbar-custom">
                     {listaOfertas.map((objeto, index) => (
-                    <div className="flex flex-none h-auto bg-white p-4 rounded-md min-w-max" key={index}>
+                    <div className="flex flex-none h-auto bg-white p-4 rounded-md w-auto" key={index}>
                         <div className="flex flex-col p-4 text-xl gap-1 font-sans relative">
                             <h2 className="text-3xl font-bold">{objeto.titulo}</h2>
                             <p>{objeto.descripcion[0]}</p>

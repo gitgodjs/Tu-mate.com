@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ChangeEvent } from 'react';
+import listaProductos from '../../Constantes temporales/listaProductos';
 
 export default function Productos() {
     const [buscando, setBuscando] = useState('');
     const listaProdFiltr = ['Todos', 'Mate', 'Bombilla', 'Termo', 'Extra'];
 
-    const busquedaOnChange = (e) => {
+    const busquedaOnChange = (e: ChangeEvent<HTMLInputElement>) => {
         setBuscando(e.target.value); 
     }
     
@@ -32,6 +33,15 @@ export default function Productos() {
                         <option className="bg-white-400" key={index} value={index}>{producto}</option>
                     ))}
                 </select>
+
+                <section>
+                    {listaProductos.map((producto, index)=>(
+                        <div className='bg-white-400 producto' key={index}>
+                            <img src={producto.imagen} alt='imagen producto' />
+                            <h2>{producto.nombre}</h2>
+                        </div>
+                    ))}
+                </section>
             </div>
         </div>
     )

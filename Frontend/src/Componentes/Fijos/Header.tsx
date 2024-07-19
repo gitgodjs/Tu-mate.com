@@ -20,8 +20,8 @@ export default function Header() {
 
     return(
         <div>
-            <header className="heder-responsive">
-                <h1>LOGO</h1>
+            <header className="heder-responsive bg-gray-900">
+                <h1 className="font-bold text-3xl">LOGO 🧉</h1>
 
                 <input 
                 type="checkbox" 
@@ -36,8 +36,8 @@ export default function Header() {
                     <div></div>
                 </label>
 
-                <nav className="nav-header">
-                    <h2>LOGO</h2>
+                <nav className="nav-header aling-center">
+                    <p className="font-bold text-3xl text-white">LOGO 🧉</p>
                     <ul>    
                         <li>
                             <Link className="nav-link" to="/">Inicio</Link>
