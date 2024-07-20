@@ -9,7 +9,7 @@ const Ofertas: React.FC<OfertasProps> = ({ texto }) => {
   return (
     <div className="mt-16" id="ofertas">
       <h2 className="flex justify-center uppercase font-bold text-4xl mb-14">{texto}</h2>
-      <div className="bg-blue-500 m-8 mx-3 rounded-md w-auto h-auto">
+      <div className="bg-gray-900 m-8 mx-3 rounded-md w-auto h-auto">
         <div className="flex gap-5 p-4 overflow-x-auto scrollbar-custom">
           {listaOfertas.map((objeto, index) => (
             <div className="flex flex-none h-auto bg-white p-4 rounded-md w-auto" key={index}>
@@ -19,7 +19,7 @@ const Ofertas: React.FC<OfertasProps> = ({ texto }) => {
                 <p>{objeto.descripcion[1]}</p>
                 <p>{objeto.descripcion[2]}</p>
                 <span className="mb-10">Precio: {objeto.precio}</span>
-                <button className="absolute left-4 bottom-0 m-0 border-none bg-yellow-500 text-xl p-2 rounded-md cursor-pointer transition duration-500 hover:bg-yellow-400 hover:rounded-md">
+                <button className="absolute left-4 bottom-0 m-0 border-none text-white font-medium bg-blue-600 text-xl p-2 rounded-md cursor-pointer duration-1000 hover:bg-yellow-400 hover:rounded-md">
                   Agregar al carrito
                 </button>
               </div>

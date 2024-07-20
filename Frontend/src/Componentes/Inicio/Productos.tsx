@@ -33,7 +33,7 @@ export default function Productos(){
     return(
         <div className="mt-16">
             <h2 className="flex justify-center uppercase mb-14 font-bold text-4xl" >nuestros productos</h2>
-            <div className="bg-blue-500 p-4 m-8 mx-3 rounded-md sm:flex-row gap-1">
+            <div className="bg-gray-900 p-4 m-8 mx-3 rounded-md sm:flex-row gap-1">
                 <div className='flex justify-center m-4'>
                     <div className="flex w-full items-center gap-2" id="buscador">
                         <input 
@@ -58,13 +58,13 @@ export default function Productos(){
                                     <h2 className='text-lg font-medium mt-2'>{producto.nombre}</h2>
                                     <p>{producto.descripcion}</p>
                                     <div className="flex items-center justify-center m-2">
-                                        <Link className='text-center bg-yellow-500 p-1 w-64 rounded-md text-lg' to='/ProductoUnico'>Ver más</Link>
+                                        <Link className='text-center bg-blue-600 text-white p-1 w-64 rounded-md text-lg' to='/ProductoUnico'>Ver más</Link>
                                     </div>
                                 </div>
                             ))
                         )}
                     </section>
-                    <Link to='/Productos' className='flex justify-center p-1 m-2 bg-yellow-500 rounded-md duration-500 hover:bg-yellow-400'>Todos los Productos</Link> 
+                    <Link to='/Productos' className='flex justify-center p-2 m-2 bg-blue-600 font-medium text-white text-2xl rounded-md duration-500 hover:bg-yellow-400'>Todos los Productos</Link> 
                 </div>
                 
             </div>
