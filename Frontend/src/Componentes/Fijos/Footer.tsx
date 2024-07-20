@@ -23,19 +23,19 @@ export default function Footer(){
                         <i className="fa-solid fa-house m-2"></i>
                     </li>
                     <li className="gap-2">
-                        <Link className="nav-link" to="/">Productos</Link>
+                        <Link className="nav-link" to="/Productos">Productos</Link>
                         <i className="fa-brands fa-dropbox m-2"></i>
                     </li>
                     <li className="gap-2">
-                        <Link className="nav-link" to="/">Envios</Link>
+                        <Link className="nav-link" to="/Envios">Envios</Link>
                         <i className="fa-solid fa-truck-fast m-2"></i>
                     </li>
                         <li className="gap-2">
-                        <Link className="nav-link" to="/">Carrito</Link>
+                        <Link className="nav-link" to="/Carrito">Carrito</Link>
                         <i className="fa-solid fa-cart-shopping m-2"></i>
                     </li>
                     <li className="gap-2">
-                        <Link className="nav-link" to="/">Nosotros</Link>
+                        <Link className="nav-link" to="/Nosotros">Nosotros</Link>
                         <i className="fa-solid fa-users m-2"></i>
                     </li>
                 </ul>

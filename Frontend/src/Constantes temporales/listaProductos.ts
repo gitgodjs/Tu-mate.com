@@ -1,6 +1,7 @@
 const listaProductos = [
     {
       "id": "yerba1",
+      "producto" : "yerba",
       "nombre": "Yerba Mate Especial",
       "descripcion": "Yerba mate de sabor intenso y aroma característico. Ideal para preparar el tradicional mate argentino.",
       "precio": 500,
@@ -8,6 +9,7 @@ const listaProductos = [
     },
     {
       "id": "bombilla1",
+      "producto" : "bombilla",
       "nombre": "Bombilla de Acero Inoxidable",
       "descripcion": "Bombilla de acero inoxidable con diseño ergonómico para un mejor filtrado de la yerba.",
       "precio": 150,
@@ -15,6 +17,7 @@ const listaProductos = [
     },
     {
       "id": "mate1",
+      "producto" : "mate",
       "nombre": "Mate de Calabaza Tradicional",
       "descripcion": "Mate de calabaza con detalles artesanales. Perfecto para disfrutar de un buen mate.",
       "precio": 300,
@@ -22,6 +25,7 @@ const listaProductos = [
     },
     {
       "id": "termo1",
+      "producto" : "termo",
       "nombre": "Termo de Acero 1L",
       "descripcion": "Termo de acero inoxidable con capacidad de 1 litro. Mantiene la temperatura de la bebida por varias horas.",
       "precio": 800,
@@ -29,6 +33,7 @@ const listaProductos = [
     },
     {
       "id": "yerbera1",
+      "producto" : "yerbera",
       "nombre": "Yerbera de Tela",
       "descripcion": "Yerbera de madera con capacidad para almacenar hasta 500 gramos de yerba. Diseño elegante y práctico.",
       "precio": 350,
@@ -36,6 +41,7 @@ const listaProductos = [
     },
     {
       "id": "bolso1",
+      "producto" : "bolso",
       "nombre": "Bolso para Mate",
       "descripcion": "Bolso de tela con compartimentos para llevar todos los elementos necesarios para disfrutar del mate.",
       "precio": 200,

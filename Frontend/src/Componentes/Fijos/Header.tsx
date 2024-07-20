@@ -44,19 +44,19 @@ export default function Header() {
                             <i className="fa-solid fa-house icono-nav"></i>
                         </li>
                         <li>
-                            <Link className="nav-link" to="/">Productos</Link>
+                            <Link className="nav-link" to="/Productos">Productos</Link>
                             <i className="fa-brands fa-dropbox icono-nav"></i>
                         </li>
                         <li>
-                            <Link className="nav-link" to="/">Envios</Link>
+                            <Link className="nav-link" to="/Envios">Envios</Link>
                             <i className="fa-solid fa-truck-fast icono-nav"></i>
                         </li>
                             <li>
-                            <Link className="nav-link" to="/">Carrito</Link>
+                            <Link className="nav-link" to="/Carrito">Carrito</Link>
                             <i className="fa-solid fa-cart-shopping icono-nav"></i>
                         </li>
                         <li>
-                            <Link className="nav-link" to="/">Nosotros</Link>
+                            <Link className="nav-link" to="/Nosotros">Nosotros</Link>
                             <i className="fa-solid fa-users icono-nav"></i>
                         </li>
                     </ul>

@@ -1,17 +1,32 @@
-import { useState, useEffect, ChangeEvent } from 'react';
+import { useState, useEffect  } from 'react';
 import { Link } from 'react-router-dom';
 import listaProductos from '../../Constantes temporales/listaProductos';
 
-export default function Productos() {
-    const [buscando, setBuscando] = useState('');
-    const listaProdFiltr = ['Todos', 'Mate', 'Bombilla', 'Termo', 'Extra'];
+interface ProductoI {
+    id: string,
+    nombre: string,
+    descripcion: string,
+    precio: number,
+    imagen: string,
+}
 
-    const busquedaOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setBuscando(e.target.value); 
-    }
+
+export default function Productos(){
+    const [buscando, setBuscando] = useState<string>('');
+    const [productos, setProductos] = useState<ProductoI[]>([]);
     
+    const mapProductos: ProductoI[] = listaProductos.map((producto: ProductoI) => producto);
     useEffect(() => {
-        //Futura logica de busqueda
+        setProductos(mapProductos)
+    },[])
+
+    useEffect(() => {
+        if(buscando === '') {
+            setProductos(mapProductos)
+        } else{
+            const busqueda = productos.filter(producto => producto.nombre.toLowerCase().includes(buscando.toLowerCase()));
+            setProductos(busqueda);
+        }
     }, [buscando]); 
 
     
@@ -19,39 +34,37 @@ export default function Productos() {
         <div className="mt-16">
             <h2 className="flex justify-center uppercase mb-14 font-bold text-4xl" >nuestros productos</h2>
             <div className="bg-blue-500 p-4 m-8 mx-3 rounded-md sm:flex-row gap-1">
-                <div className='flex justify-between'>
-                    <div className="flex items-center gap-2" id="buscador">
+                <div className='flex justify-center m-4'>
+                    <div className="flex w-full items-center gap-2" id="buscador">
                         <input 
-                            onChange={busquedaOnChange} 
-                            value={buscando} 
-                            className="w-auto p-1 rounded-md text-xl outline-none" type="text" 
+                            onChange={(e) => setBuscando(e.target.value)} 
+                            className="w-full p-1 rounded-md text-xl outline-none" type="text" 
                             maxLength={20} placeholder="¿Qué buscas?"
                         />
                         <i className="fa-solid fa-magnifying-glass text-white"></i>
                     </div>
-                    
-                    <select className="bg-custom-yellow w-auto p-2 outline-none rounded-md" name="filtrobusqueda" id="filtro">
-                        {listaProdFiltr.map((producto, index) => (
-                            <option className="bg-white-400 text-gray-800" key={index} value={index}>{producto}</option>
-                        ))}
-                    </select>
                 </div>
                 
                 <div>
-                   <section className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-2'>
-                        {listaProductos.map((producto, index) => (
-                            <div className='bg-white rounded-md p-2 producto' key={index}>
-                                <div className='flex items-center justify-center h-64'>
-                                    <img src={producto.imagen} alt='imagen producto' className='rounded-md w-full h-full object-cover'/>
+                   <section className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-2 h-96 overflow-y-scroll scrollbar-custom'>
+                    {productos.length === 0 ? (
+                        <h2 className='text-center text-3xl text-white'>El producto que estas buscando no está disponible o no existe</h2>
+                        ) : (
+                            productos.map((producto, index) => (
+                                <div className='bg-white rounded-md p-2 producto' key={index}>
+                                    <div className='flex items-center justify-center h-64'>
+                                        <img src={producto.imagen} alt='imagen producto' className='rounded-md w-full h-full object-cover'/>
+                                    </div>
+                                    <h2 className='text-lg font-medium mt-2'>{producto.nombre}</h2>
+                                    <p>{producto.descripcion}</p>
+                                    <div className="flex items-center justify-center m-2">
+                                        <Link className='text-center bg-yellow-500 p-1 w-64 rounded-md text-lg' to='/Producto'>Ver más</Link>
+                                    </div>
                                 </div>
-                                <h2 className='text-lg font-medium mt-2'>{producto.nombre}</h2>
-                                <p>{producto.descripcion}</p>
-                                <div className="flex items-center justify-center m-2">
-                                    <Link className='text-center bg-yellow-500 p-1 w-64 rounded-md text-lg' to='/a'>Ver mas</Link>
-                                </div>
-                            </div>
-                        ))}
-                    </section> 
+                            ))
+                        )}
+                    </section>
+                    <Link to='/Productos' className='flex justify-center p-1 m-2 bg-yellow-500 rounded-md duration-500 hover:bg-yellow-400'>Todos los Productos</Link> 
                 </div>
                 
             </div>
