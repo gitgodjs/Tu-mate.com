@@ -6,7 +6,7 @@ export default function Inicio() {
     return (
         <>
             <ImagenesPresentacion />
-            <Ofertas />
+            <Ofertas texto={'nuestors combos'}/>
             <Productos />
         </>
     );

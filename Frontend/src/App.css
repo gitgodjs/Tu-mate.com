@@ -38,6 +38,7 @@ ul {
     text-decoration: none;
     color: white;
     font-size: 18px;
+    text-transform: uppercase;
 }
 
 .nav-header h2 {

@@ -4,6 +4,7 @@ import Inicio from './Paginas/Inicio';
 import Nosotros from './Paginas/Nosotros';
 import Header from './Componentes/Fijos/Header';
 import Footer from './Componentes/Fijos/Footer';
+import ProductoUnico from './Paginas/Producto';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/Nosotros" element={<Nosotros />} />
+          <Route path="/ProductoUnico" element={<ProductoUnico />} />
         </Routes>
         <Footer />
       </BrowserRouter>

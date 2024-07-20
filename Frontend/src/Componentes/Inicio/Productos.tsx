@@ -58,7 +58,7 @@ export default function Productos(){
                                     <h2 className='text-lg font-medium mt-2'>{producto.nombre}</h2>
                                     <p>{producto.descripcion}</p>
                                     <div className="flex items-center justify-center m-2">
-                                        <Link className='text-center bg-yellow-500 p-1 w-64 rounded-md text-lg' to='/Producto'>Ver más</Link>
+                                        <Link className='text-center bg-yellow-500 p-1 w-64 rounded-md text-lg' to='/ProductoUnico'>Ver más</Link>
                                     </div>
                                 </div>
                             ))

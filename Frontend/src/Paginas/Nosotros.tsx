@@ -1,4 +1,5 @@
 export default function Nosotros(){
+
     const scrollToSection = (id:string) => {
         const element = document.getElementById(id);
         if (element) {
@@ -8,7 +9,6 @@ export default function Nosotros(){
             });
         }
     };
-
     return(
         <div>
             <div className="imagenSomos relative w-full bg-[url('https://i.pinimg.com/originals/45/86/30/458630e2ed6d723a3d215c404ef41a45.jpg')] bg-cover bg-center">

@@ -1,3 +1,4 @@
 - Arreglar busqueda
 - Cambiar seccion de envios por seccion de armar tu mate -> guia de pasos para armarte tu propio combo
+- Reutilizar ScrollTo()
 - Empezar pagina de cada producto (usar useState o preguntar a gaspi) // hacer con php y que responda la  url segun el ID del producto
