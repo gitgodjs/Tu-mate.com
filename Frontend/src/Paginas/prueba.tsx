@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useState } from "react"
 export default function Prueba(){
     const [id, setId] = useState('');
     const [imageUrl, setImageUrl] = useState('');
@@ -6,7 +6,8 @@ export default function Prueba(){
     const [descripcion, setDescripcion] = useState('');
     const [precio, setPrecio] = useState('')
 
-    async function handleSubmit(e){
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>){
+
         e.preventDefault();
         const data = {
             id, 
@@ -27,9 +28,11 @@ export default function Prueba(){
             if(!respuesta.ok){
                 throw new Error('Problema al enviar el producto'); 
             }
-            const resServer = respuesta.json();
-        
-            console.log(resServer);
+            
+            const respuestaServidor = await respuesta.json();
+            console.log(respuestaServidor.data.message);
+            
+
         } catch (error) {
             console.log('Error: ', error);
         };
