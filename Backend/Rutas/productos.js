@@ -21,13 +21,13 @@ router.get('/', async(req, res) => {
             )
         }
     } catch (error) {
+        console.error('Error al obtener productos: ', error);
         return res.status(400).json(
             jsonResponse(400, {
                 message: 'No se encontraron productos'
             })
         );
-    }
-    
+    };
 });
 
 router.post('/', async(req, res) => {
