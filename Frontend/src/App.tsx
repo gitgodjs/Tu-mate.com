@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Inicio from './Paginas/Inicio';
 import Nosotros from './Paginas/Nosotros';
 import Header from './Componentes/Fijos/Header';
+import Prueba from './Paginas/prueba';
 import Footer from './Componentes/Fijos/Footer';
 import ProductoUnico from './Paginas/Producto';
 
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/Nosotros" element={<Nosotros />} />
+          <Route path="/Prueba" element={<Prueba />} />
           <Route path="/ProductoUnico" element={<ProductoUnico />} />
         </Routes>
         <Footer />
