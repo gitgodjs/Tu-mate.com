@@ -19,7 +19,7 @@ const Ofertas: React.FC<OfertasProps> = ({ texto }) => {
                 <p>{objeto.descripcion[1]}</p>
                 <p>{objeto.descripcion[2]}</p>
                 <span className="mb-10">Precio: {objeto.precio}</span>
-                <button className="absolute left-4 bottom-0 m-0 border-none text-white font-medium bg-blue-600 text-xl p-2 rounded-md cursor-pointer duration-1000 hover:bg-yellow-400 hover:rounded-md">
+                <button className="absolute left-4 bottom-0 m-0 border-none text-white font-medium bg-blue-600 text-xl p-2 rounded-md cursor-pointer duration-1000 hover:bg-yellow-400 ">
                   Agregar al carrito
                 </button>
               </div>
