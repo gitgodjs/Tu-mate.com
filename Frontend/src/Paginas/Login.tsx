@@ -1,7 +1,12 @@
-import { useState } from 'react';
+import React, { useState } from "react";
 
 export default function Login() {
   const [showLogin, setShowLogin] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const uri = 'http://localhost:4000/api/nuevoUsuario';
 
   const handleSignInClick = () => {
     setShowLogin(true);
@@ -10,6 +15,31 @@ export default function Login() {
   const handleSignUpClick = () => {
     setShowLogin(false);
   };
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        const formData = {
+            name,
+            email,
+            password,
+        };
+        try {
+            const data = await fetch(uri, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            if (!data.ok) {
+                throw new Error('Error con los datos');
+            }
+            const respuestaServidor = await data.json();
+            console.log(respuestaServidor);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
   return (
     <div>
@@ -25,23 +55,23 @@ export default function Login() {
           <div className="form-information">
             <div className="form-information-childs">
               <h2>Crear una Cuenta</h2>
-              <form className="form form-register">
+              <form className="form form-register" onSubmit={handleSubmit}>
                 <div>
                   <label>
                     <i className='bx bx-user'></i>
-                    <input type="text" placeholder="Nombre Usuario" name="userName" />
+                    <input type="text" placeholder="Nombre Usuario" name="userName" onChange={(e)=>setName(e.target.value)}/>
                   </label>
                 </div>
                 <div>
                   <label>
                     <i className='bx bx-envelope'></i>
-                    <input type="email" placeholder="Correo Electronico" name="userEmail" />
+                    <input type="email" placeholder="Correo Electronico" name="userEmail" onChange={(e)=>setEmail(e.target.value)} />
                   </label>
                 </div>
                 <div>
                   <label>
                     <i className='bx bx-lock-alt'></i>
-                    <input type="password" placeholder="Contraseña" name="userPassword" />
+                    <input type="password" placeholder="Contraseña" name="userPassword" onChange={(e)=>setPassword(e.target.value)}/>
                   </label>
                 </div>
                 <input type="submit" value="Registrarse" />
