@@ -22,6 +22,5 @@ export default function ImagenesPresentacion() {
                 <i onClick={() => scrollToSection('ofertas')} className="absolute bottom-5 text-xl text-white fa-solid fa-chevron-down animate-bounce cursor-pointer"></i>
             </div>
         </div>
-        
     )
 }

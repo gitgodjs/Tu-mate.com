@@ -165,7 +165,6 @@ export default function Prueba(){
                         ))
                         } 
                     </section>
-                    
                 </div>
         </div>
     )
