@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Navigate, useNavigate} from "react-router-dom";
+import { useAuth } from "../Auth/AuthProvider";
 
 export default function Login() {
   const [showLogin, setShowLogin] = useState(false);
@@ -6,7 +8,12 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const uri = 'http://localhost:4000/api/nuevoUsuario';
+  const uri = 'http://localhost:4000/api';
+  const goTo = useNavigate();
+  const auth = useAuth();
+  if (auth.isAuthenticated) {
+    return <Navigate to="/comentarios" />
+  }
 
   const handleSignInClick = () => {
     setShowLogin(true);
@@ -24,7 +31,7 @@ export default function Login() {
             password,
         };
         try {
-            const data = await fetch(uri, {
+            const data = await fetch(`${uri}/nuevoUsuario`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -40,6 +47,35 @@ export default function Login() {
             console.log(error);
         }
     }
+
+    async function singUp(e: React.FormEvent<HTMLFormElement>) {
+      e.preventDefault();
+    
+      const formData = { email, password };
+    
+      try {
+        const data = await fetch(`${uri}/signUp`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+    
+        if (!data.ok) throw new Error('No se pudo ingresar');
+    
+        const respuesta = await data.json();
+        if (respuesta.body.name && respuesta.body.accessToken && respuesta.body.refreshToken) {
+          console.log(respuesta.body.name);
+          console.log(auth);
+          auth.saveUser(respuesta);
+          goTo("/ProductoUnico");
+        }
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    }
+    
 
   return (
     <div>
@@ -75,8 +111,6 @@ export default function Login() {
                   </label>
                 </div>
                 <input type="submit" value="Registrarse" />
-                <div className="alerta-error">Todos los campos son obligatorios</div>
-                <div className="alerta-exito">Te registraste correctamente</div>
               </form>
             </div>
           </div>
@@ -95,23 +129,21 @@ export default function Login() {
           <div className="form-information">
             <div className="form-information-childs">
               <h2>Iniciar Sesión</h2>
-              <form className="form form-login">
+              <form className="form form-login" onSubmit={singUp}>
                 <div>
                   <label>
                     <i className='bx bx-envelope'></i>
-                    <input type="email" placeholder="Correo Electronico" name="userPassword" />
+                    <input type="email" placeholder="Correo Electronico" name="userPassword" onChange={(e)=>setEmail(e.target.value)}/>
                   </label>
-                </div>
+  ,              </div>
                 <div>
                   <label>
                     <i className='bx bx-lock-alt'></i>
-                    <input type="password" placeholder="Contraseña" name="userPassword" />
+                    <input type="password" placeholder="Contraseña" name="userPassword" onChange={(e)=>setPassword(e.target.value)}/>
                   </label>
-                </div>
+  ,              </div>
 
                 <input type="submit" value="Iniciar Sesión" />
-                <div className="alerta-error">Todos los campos son obligatorios</div>
-                <div className="alerta-exito">Te registraste correctamente</div>
               </form>
             </div>
           </div>

@@ -6,7 +6,7 @@ import Nosotros from './Paginas/Nosotros';
 import Header from './Componentes/Fijos/Header';
 import Prueba from './Paginas/prueba';
 import Footer from './Componentes/Fijos/Footer';
-import ProductoUnico from './Paginas/Producto';
+import ProtectedRoute from './Paginas/Protegidas';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
           <Route path="/" element={<Inicio />} />
           <Route path="/Nosotros" element={<Nosotros />} />
           <Route path="/Prueba" element={<Prueba />} />
-          <Route path="/ProductoUnico" element={<ProductoUnico />} />
+          <Route path="/ProductoUnico" element={<ProtectedRoute/>} />
         </Routes>
         <Footer />
       </BrowserRouter>

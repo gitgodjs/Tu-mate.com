@@ -19,6 +19,8 @@ app.use(bodyParser.json());
 
 app.use("/api/subirProd", require("./Rutas/productos"));
 app.use("/api/nuevoUsuario", require("./Rutas/usuarios"));
+app.use("/api/refresh-token", require("./Rutas/refreshToken"));
+app.use("/api/signUp", require("./Rutas/signUp"));
 
 
 // Conexiones
