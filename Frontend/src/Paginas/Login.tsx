@@ -83,7 +83,7 @@ export default function Login() {
         <div className="container-form register">
           <div className="information">
             <div className="info-childs">
-              <h2>¡Bienvenido!</h2>
+              <h2>¡Bienvenido/a!</h2>
               <p>Para unirte a nuestra comunidad por favor Inicia Sesión con tus datos</p>
               <input type="button" value="Iniciar Sesión" id="sign-in" onClick={handleSignInClick} />
             </div>
