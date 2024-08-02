@@ -9,7 +9,7 @@ function sign(payload, isAccessToken){
         : process.env.REFRESH_TOKEN_SECRET, 
         {
             algorithm: "HS256",
-            expiresIn: isAccessToken ? '1h' : '7d',
+            expiresIn: '1h',
         }
     );
 }

@@ -37,7 +37,7 @@ export default function Header() {
                 </label>
 
                 <nav className="nav-header aling-center">
-                    <p className="font-bold text-3xl text-white">LOGO 🧉</p>
+                    <p className="font-bold text-3xl text-white">Tu Mate 🧉</p>
                     <ul>    
                         <li>
                             <Link className="nav-link" to="/">Inicio</Link>
@@ -54,10 +54,6 @@ export default function Header() {
                             <li>
                             <Link className="nav-link" to="/Carrito">Carrito</Link>
                             <i className="fa-solid fa-cart-shopping icono-nav"></i>
-                        </li>
-                        <li>
-                            <Link className="nav-link" to="/Nosotros">Nosotros</Link>
-                            <i className="fa-solid fa-users icono-nav"></i>
                         </li>
                     </ul>
                 </nav>

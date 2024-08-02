@@ -220,13 +220,18 @@ nav p {
 
 /* Estilo para el scrollbar */
 .scrollbar-custom::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 0px;
+    height: 7px;
   }
   
   .scrollbar-custom::-webkit-scrollbar-thumb {
-    background: #80a6e7; 
+    background: #c7cfdc; 
     border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background: #c0cfe8;
   }
   
 /* Animacion de flecha */

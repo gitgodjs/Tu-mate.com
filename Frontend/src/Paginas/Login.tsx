@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Navigate, useNavigate} from "react-router-dom";
 import { useAuth } from "../Auth/AuthProvider";
+import { AuthResponse, AuthResponseError } from "../Types/types";
 
 export default function Login() {
   const [showLogin, setShowLogin] = useState(false);
@@ -12,7 +13,7 @@ export default function Login() {
   const goTo = useNavigate();
   const auth = useAuth();
   if (auth.isAuthenticated) {
-    return <Navigate to="/comentarios" />
+    return <Navigate to="/ProductoUnico" />
   }
 
   const handleSignInClick = () => {
@@ -41,39 +42,44 @@ export default function Login() {
             if (!data.ok) {
                 throw new Error('Error con los datos');
             }
-            const respuestaServidor = await data.json();
-            console.log(respuestaServidor);
+            setShowLogin(true);
         } catch (error) {
             console.log(error);
         }
     }
 
-    async function singUp(e: React.FormEvent<HTMLFormElement>) {
+    async function singUp(e: React.FormEvent) {
       e.preventDefault();
-    
-      const formData = { email, password };
-    
+      const formData = {
+        email,
+        password,
+    };
       try {
-        const data = await fetch(`${uri}/signUp`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+        const response = await fetch(`${uri}/signUp`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
         });
-    
-        if (!data.ok) throw new Error('No se pudo ingresar');
-    
-        const respuesta = await data.json();
-        if (respuesta.body.name && respuesta.body.accessToken && respuesta.body.refreshToken) {
-          console.log(respuesta.body.name);
-          console.log(auth);
-          auth.saveUser(respuesta);
-          goTo("/ProductoUnico");
+
+        if (response.ok) {
+          const json = (await response.json()) as AuthResponse;
+          console.log(json);
+  
+          if (json.body.accessToken && json.body.refreshToken) {
+            auth.saveUser(json);
+          }
+        } else {
+          const json = (await response.json()) as AuthResponseError;
+          console.log(json)
         }
+
       } catch (error) {
-        console.log('Error: ', error);
+        console.log(error);
       }
+    }
+
+    if (auth.isAuthenticated) {
+      return goTo('/ProductoUnico');
     }
     
 

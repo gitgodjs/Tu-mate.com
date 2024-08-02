@@ -1,4 +1,3 @@
-// AuthProvider.tsx
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { AuthResponse, User } from "../Types/types";  
 import { API_URL } from "./constants";
@@ -118,8 +117,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
   function saveUser(userData: AuthResponse) {
     console.log("Saving user:", userData);
     const userInfo = {
-      name: userData.body.name.name, // Debería ajustarse a la estructura de User
-      email: userData.body.name.email
+      name: userData.body.user.name,
+      email: userData.body.user.email
     };
     saveSessionInfo(userInfo, userData.body.accessToken, userData.body.refreshToken);
   }

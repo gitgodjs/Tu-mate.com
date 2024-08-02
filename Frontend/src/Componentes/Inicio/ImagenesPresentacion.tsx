@@ -19,7 +19,7 @@ export default function ImagenesPresentacion() {
                 <h3 className="text-yellow-500">Tu mate online</h3>
                 <p>Los mejores mates, con los mejores precios, ofertas y prenstaciones. Busca tu mate ideal y te lo llevamos!</p>
                 <Link className="link-presentacion" to="/">Armate el tuyo</Link>
-                <i onClick={() => scrollToSection('ofertas')} className="absolute bottom-5 text-xl text-white fa-solid fa-chevron-down animate-bounce cursor-pointer"></i>
+                <i onClick={() => scrollToSection('quienesSomos')} className="absolute bottom-5 text-xl text-white fa-solid fa-chevron-down animate-bounce cursor-pointer"></i>
             </div>
         </div>
     )

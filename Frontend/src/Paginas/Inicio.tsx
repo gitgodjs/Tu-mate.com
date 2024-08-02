@@ -1,13 +1,15 @@
-import Ofertas from "../Componentes/Inicio/Ofertas";
 import ImagenesPresentacion from "../Componentes/Inicio/ImagenesPresentacion";
-import Productos from "../Componentes/Inicio/Productos";
+import Nosotros from "../Componentes/Inicio/Nosotros";
+import Clientes from "../Componentes/Inicio/Clientes";
+import Imagenes from "../Componentes/Inicio/Imagenes";
 
 export default function Inicio() {
     return (
         <>
             <ImagenesPresentacion />
-            <Ofertas texto={'nuestors combos'}/>
-            <Productos />
+            <Nosotros />
+            <Imagenes />
+            <Clientes />
         </>
     );
 }
