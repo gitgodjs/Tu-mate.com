@@ -151,19 +151,16 @@ export default function Login() {
                 </div>
                 <div>
                   <label>
-                    <i className='bx bx-user'></i>
                     <input type="text" placeholder="Nombre Usuario" name="userName" onChange={(e)=>setName(e.target.value)}/>
                   </label>
                 </div>
                 <div>
                   <label>
-                    <i className='bx bx-envelope'></i>
                     <input type="email" placeholder="Correo Electronico" name="userEmail" onChange={(e)=>setEmail(e.target.value)} />
                   </label>
                 </div>
                 <div>
                   <label>
-                    <i className='bx bx-lock-alt'></i>
                     <input type="password" placeholder="Contraseña" name="userPassword" onChange={(e)=>setPassword(e.target.value)}/>
                   </label>
                 </div>
