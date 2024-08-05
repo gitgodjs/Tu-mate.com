@@ -23,7 +23,6 @@ router.post("/", async (req, res) => {
         const emailExist = await User.emailExist(email);
 
         if (nameExist) {
-            console.log("Error: El nombre ya está en uso.");
             return res.status(400).json(
                 jsonResponse(400, {
                     error: "El nombre ya está en uso."
@@ -32,7 +31,6 @@ router.post("/", async (req, res) => {
         }
 
         if (emailExist) {
-            console.log("Error: El correo electrónico ya está en uso.");
             return res.status(400).json(
                 jsonResponse(400, {
                     error: "El correo electrónico ya está en uso."
@@ -43,8 +41,6 @@ router.post("/", async (req, res) => {
         const newUser = new User({ name, email, password });
         await newUser.save();
 
-        console.log("Usuario creado exitosamente");
-
         return res.status(200).json(
             jsonResponse(200, 
                 { message: "Usuario creado!" }
@@ -52,7 +48,6 @@ router.post("/", async (req, res) => {
         );
 
     } catch (error) {
-        console.error("Error al crear el usuario:", error);
         return res.status(500).json(
             jsonResponse(500, {
                 error: "Error al crear el usuario!"

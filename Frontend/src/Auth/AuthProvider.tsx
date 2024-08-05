@@ -106,7 +106,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }, []);
 
   function saveSessionInfo(userInfo: User, accessToken: string, refreshToken: string) {
-    console.log("Saving session info:", { userInfo, accessToken, refreshToken });
     setAccessToken(accessToken);
     localStorage.setItem("accessToken", accessToken);
     localStorage.setItem("refreshToken", refreshToken);
@@ -115,15 +114,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }  
   
   function saveUser(userData: AuthResponse) {
-    if (userData && userData.body && userData.body) {
-      const userInfo = {
-        name: userData.body.name,
-        email: userData.body.email,
-      };
-      saveSessionInfo(userInfo, userData.body.accessToken, userData.body.refreshToken);
-    } else {
-      console.error("Invalid user data:", userData);
+    const userInfo = {
+      name: userData.body.name,
+      email: userData.body.email,
     }
+    saveSessionInfo(userInfo, userData.body.accessToken, userData.body.refreshToken);
   }
   
   
