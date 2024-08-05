@@ -7,14 +7,12 @@ export interface User {
 // Define la estructura de la respuesta de autenticación
 export interface AuthResponse {
   body: {
-    user: {
-      name: string;
-      email: string;
-    },
+    name: string;
+    email: string;
     accessToken: string;
     refreshToken: string;
   }
-};
+}
 
 // Define la estructura de la respuesta de error de autenticación
 export interface AuthResponseError {

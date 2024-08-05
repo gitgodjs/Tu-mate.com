@@ -66,6 +66,7 @@ export default function Login() {
           console.log(json);
   
           if (json.body.accessToken && json.body.refreshToken) {
+            console.log("Bien!", json.body.accessToken);
             auth.saveUser(json);
           }
         } else {

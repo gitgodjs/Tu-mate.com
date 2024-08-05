@@ -112,15 +112,18 @@ export function AuthProvider({ children }: AuthProviderProps) {
     localStorage.setItem("refreshToken", refreshToken);
     setIsAuthenticated(true);
     setUser(userInfo);
-  }
+  }  
   
   function saveUser(userData: AuthResponse) {
-    console.log("Saving user:", userData);
-    const userInfo = {
-      name: userData.body.user.name,
-      email: userData.body.user.email
-    };
-    saveSessionInfo(userInfo, userData.body.accessToken, userData.body.refreshToken);
+    if (userData && userData.body && userData.body) {
+      const userInfo = {
+        name: userData.body.name,
+        email: userData.body.email,
+      };
+      saveSessionInfo(userInfo, userData.body.accessToken, userData.body.refreshToken);
+    } else {
+      console.error("Invalid user data:", userData);
+    }
   }
   
   
