@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { API_URL } from "../Auth/constants";
 
 interface Producto {
     id: string; 
@@ -20,36 +21,44 @@ export default function Prueba(){
     const [name, setName] = useState('');
     const [descripcion, setDescripcion] = useState('');
     const [precio, setPrecio] = useState('')
-    const [listaProd, setListaProd] = useState<Producto[]>([]);
+    const [listaProd, setListaProductos] = useState<Producto[]>([]);
 
     const uri = 'http://localhost:4000/api/subirProd';
     // Obtener un producto
-    useEffect(()=>{
-        async function obtenerProductos(){
-            try{
-                const respuesta = await fetch(uri, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-
-                if(!respuesta.ok){
+    async function obtenerProductos() {
+        return new Promise<Producto[]>((resolve, reject) => {
+            fetch(`${API_URL}/productos`, {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+            .then(response => {
+                if (!response.ok) {
                     throw new Error('No pudimos obtener los productos');
                 }
+                return response.json();
+            })
+            .then((res: ApiResponse) => {
+                resolve(res.data.productos);
+            })
+            .catch(error => {
+                console.error(error);
+                reject([]);
+            });
+        });
+    }
 
-                const dat: ApiResponse = await respuesta.json();
-                console.log(dat);
-                setListaProd(dat.data.productos);
-                console.log(listaProd);
-            } catch(error){
-                console.error('Error al obtener productos:', error);
-            }
-        }
-        
-        obtenerProductos();
-        
-    },[uri])
+    useEffect(() => {
+        obtenerProductos()
+            .then(productos => {
+                setListaProductos(productos);
+            })
+            .catch(error => {
+                console.error("Error al obtener productos: ", error);
+                setListaProductos([]); 
+            });
+    }, []);
 
     // Subir un producto
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>){
@@ -62,7 +71,7 @@ export default function Prueba(){
             precio
         };
         try {
-            const respuesta = await fetch(uri, {
+            const respuesta = await fetch(`${API_URL}/productos`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
@@ -71,7 +80,7 @@ export default function Prueba(){
             })
 
             if(!respuesta.ok){
-                throw new Error('Problema al enviar el producto'); 
+                console.log(respuesta.json()); 
             }
             
             const respuestaServidor = await respuesta.json();

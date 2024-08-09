@@ -4,7 +4,7 @@ import { useAuth } from "../Auth/AuthProvider";
 import { AuthResponse } from "../Types/types";
 import { API_URL } from "../Auth/constants";
 
-export default function Login() {
+export default function LoginPag() {
   const [showLogin, setShowLogin] = useState(false);
 
   const [name, setName] = useState('');

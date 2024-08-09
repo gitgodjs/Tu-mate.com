@@ -29,3 +29,17 @@ export interface AccessTokenResponse {
   };
   error: string;
 }
+
+export interface Producto {
+  id: string; 
+  name: string;
+  descripcion: string;
+  imageUrl: string;
+  precio: number;
+}
+
+export interface ApiResponse {
+  data: {
+      productos: Producto[];
+  };
+}

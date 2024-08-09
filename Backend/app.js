@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 
 // Rutas
 
-app.use("/api/subirProd", require("./Rutas/productos"));
+app.use("/api/productos", require("./Rutas/productos"));
 app.use("/api/nuevoUsuario", require("./Rutas/login"));
 app.use("/api/signUp", require("./Rutas/signUp"));
 app.use("/api/user", require("./Rutas/user"));

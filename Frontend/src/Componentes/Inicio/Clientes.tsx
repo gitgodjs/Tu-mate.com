@@ -1,7 +1,7 @@
 export default function Clientes(){
     return(
         <div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 p-4 gap-10 m-2" id="quienesSomos">
+            <div className="flex flex-col-reverse sm:grid grid-cols-2 p-4 gap-10 m-2" id="quienesSomos">
                 <section className="flex w-auto h-96">
                     <img src="https://i.pinimg.com/564x/94/2a/02/942a027c9da50bed8e61adf7a5b5c099.jpg" alt="Imagen1" className="imagenGaleria"/>
                     <img src="https://i.pinimg.com/564x/39/ea/ce/39eaced01b40d7d5edab1e431b4cd5b4.jpg" alt="Imagen2" className="imagenGaleria"/>
