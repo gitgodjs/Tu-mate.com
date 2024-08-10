@@ -32,6 +32,7 @@ export interface AccessTokenResponse {
 
 export interface Producto {
   id: string; 
+  tipo: string;
   name: string;
   descripcion: string;
   imageUrl: string;

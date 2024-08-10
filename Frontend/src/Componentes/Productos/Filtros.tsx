@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 
 export default function Filtros(){
     const Prod_list = ["Todos", "Mates", "Bombillas", "Termos", "Bolsos", "Yerbas"];
@@ -20,12 +18,6 @@ export default function Filtros(){
                     ))
                 }
                 </select> 
-            </div>
-            <div className="grid text-center m-1">
-                <Link to="/ProductoUnico" 
-                className="rounded-md bg-blue-800 text-lg text-white p-1">
-                Arma tu propio combo
-                </Link>
             </div>
         </div>
     )

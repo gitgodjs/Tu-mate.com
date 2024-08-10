@@ -17,6 +17,7 @@ interface ApiResponse {
 
 export default function Prueba(){
     const [id, setId] = useState('');
+    const [tipo, setTipo] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [name, setName] = useState('');
     const [descripcion, setDescripcion] = useState('');
@@ -64,7 +65,8 @@ export default function Prueba(){
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>){
         e.preventDefault();
         const data = {
-            id, 
+            id,
+            tipo, 
             imageUrl, 
             name, 
             descripcion, 
@@ -92,6 +94,9 @@ export default function Prueba(){
         };
     };
 
+    useEffect(()=>{
+        console.log(tipo)
+    },[tipo])
 
     return(
         <div className="p-4">
@@ -152,6 +157,14 @@ export default function Prueba(){
                                 value={id}
                                 onChange={(e) => setId(e.target.value)}
                             /> 
+                            <label htmlFor="id" className="text-red-600">ID Prod</label>
+                            <select name="" id="" onChange={(e) => setTipo(e.target.value)}>
+                                <option value="Termo">Termo</option>
+                                <option value="Mate">Mate</option>
+                                <option value="Bombilla">Bombilla</option>
+                                <option value="Bolso">Bolso</option>
+                                <option value="Yerba">Yerba</option>
+                            </select>
                         </div>
                     </div>
                     <div className="boton_registro">

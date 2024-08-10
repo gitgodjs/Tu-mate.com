@@ -31,9 +31,9 @@ router.get('/', async(req, res) => {
 });
 
 router.post('/', async(req, res) => {
-    const { id, imageUrl, name, descripcion, precio } = req.body;
+    const { id, tipo, imageUrl, name, descripcion, precio } = req.body;
 
-    if(!id || !imageUrl || !name || !descripcion || !precio) {
+    if(!id || !tipo || !imageUrl || !name || !descripcion || !precio) {
         return res.status(400).json(
             jsonResponse(400, {
                 error: "Todos los campos son requeridos."
@@ -42,7 +42,7 @@ router.post('/', async(req, res) => {
     };
 
     try {
-        const nuevoProducto = new Producto({ id, imageUrl, name, descripcion, precio })
+        const nuevoProducto = new Producto({ id, tipo, imageUrl, name, descripcion, precio })
         await nuevoProducto.save();
         
         return res.status(200).json(
