@@ -10,7 +10,6 @@ interface Nom_Producto {
 export default function ArmarCombo(){
     const [listaProductos, setListaProductos] = useState<Producto[]>([]);
     const [parteCombo, setParteCombo] = useState("Termos");
-    const partes = ["Termos", "Mates", "Bombillas", "Bolsos", "Yerbas", "Completo"];
     const [historialProductos, setHistorialProductos] = useState<Nom_Producto[]>([]);
 
     const [termo, setTermo] = useState("");
@@ -52,16 +51,20 @@ export default function ArmarCombo(){
         }
     }
 
-    // USAR EL HISTORIAL PARA QUE CUANDO ESTE TERMINADO EL COMBO MOSTRARLO EN PANTALLA
-
+    
+    // RESOLVER PROBLEMA DE ESTE CODIGO (BUCLE INFINITO)
+    const partes = ["Termos", "Mates", "Bombillas", "Bolsos", "Yerbas"];
     function avanzarPaso() {
-        const index = partes.indexOf(parteCombo);
-        if (index < partes.length - 1) {
-            setParteCombo(partes[index + 1]);
+        const i = partes.indexOf(parteCombo);
+    
+        if (i >= 0 && i <= partes.length - 1) {
+            setParteCombo(partes[i + 1]);
         } else {
-            console.log("Todos los pasos completados");
+            console.log("productos listos: ", historialProductos);
         }
     }
+    ///////////////////////////////////////////////////
+
 
     function pasoAtrasCombo() {
         const index = partes.indexOf(parteCombo);

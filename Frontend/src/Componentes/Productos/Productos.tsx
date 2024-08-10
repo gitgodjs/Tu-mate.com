@@ -6,6 +6,7 @@ import Filtros from "./Filtros";
 export default function Productos() {
     const [listaProductos, setListaProductos] = useState<Producto[]>([]);
     const [filtro, setFiltro] = useState('Todos')
+    const [orden, setOrden] = useState(0);
 
     useEffect(() => {
         obtenerProductos()
@@ -22,13 +23,14 @@ export default function Productos() {
         filtro != "Todos" ? 
         listaProductos.filter(producto => producto.tipo === filtro) 
         : listaProductos;
-    
+    // FALTA ORDENAR TODO POR PRECIO (mal dia)
+    console.log(orden)
     
 
     return (
         <div>
-            <Filtros filtro={setFiltro}/>
-            <section id="Productos sueltos" className="grid grid-cols-1 gap-2 m-1 p-1 sm:grid-cols-4">
+            <Filtros filtro={setFiltro} orden={setOrden}/>
+            <section id="Productos sueltos" className="grid grid-cols-2 gap-2 m-1 p-1 sm:grid-cols-4">
                 {prod_filtrados.map((producto, key)=>(
                     
                     <div className='grid grid-cols-1 bg-gray-100 rounded-md p-2 producto' key={key}>
