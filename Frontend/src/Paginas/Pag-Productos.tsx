@@ -24,7 +24,6 @@ export default function ProductosPag(){
 
             {verTodo && (
                 <div>
-                    <Filtros />
                     <Productos />
                 </div>
             )}

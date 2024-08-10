@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import obtenerProductos from "./ObtenerProductos";
 import { Producto } from "../../Types/types";
+import Filtros from "./Filtros";
 
 export default function Productos() {
     const [listaProductos, setListaProductos] = useState<Producto[]>([]);
-    const [parteCombo, setParteCombo] = useState("Todos");
+    const [filtro, setFiltro] = useState('Todos')
 
     useEffect(() => {
         obtenerProductos()
@@ -16,13 +17,19 @@ export default function Productos() {
                 setListaProductos([]); 
             });
     }, []);
-
-    const filtrarPartes = listaProductos.filter(producto => producto.tipo == parteCombo);
+    
+    console.log(filtro)
+    const prod_filtrados = 
+        filtro != "Todos" ? listaProductos.filter(producto => producto.tipo === filtro) 
+        : listaProductos;
+    
+    
 
     return (
         <div>
+            <Filtros filtro={setFiltro}/>
             <section id="Productos sueltos" className="grid grid-cols-1 gap-2 m-1 p-1 sm:grid-cols-4">
-                {filtrarPartes.map((producto, key)=>(
+                {prod_filtrados.map((producto, key)=>(
                     
                     <div className='grid grid-cols-1 bg-gray-100 rounded-md p-2 producto' key={key}>
                         <div id="img" className='flex items-center justify-center h-64'>

@@ -24,7 +24,6 @@ export default function Prueba(){
     const [precio, setPrecio] = useState('')
     const [listaProd, setListaProductos] = useState<Producto[]>([]);
 
-    const uri = 'http://localhost:4000/api/subirProd';
     // Obtener un producto
     async function obtenerProductos() {
         return new Promise<Producto[]>((resolve, reject) => {
@@ -159,11 +158,11 @@ export default function Prueba(){
                             /> 
                             <label htmlFor="id" className="text-red-600">ID Prod</label>
                             <select name="" id="" onChange={(e) => setTipo(e.target.value)}>
-                                <option value="Termo">Termo</option>
-                                <option value="Mate">Mate</option>
-                                <option value="Bombilla">Bombilla</option>
-                                <option value="Bolso">Bolso</option>
-                                <option value="Yerba">Yerba</option>
+                                <option value="Termos">Termos</option>
+                                <option value="Mates">Mates</option>
+                                <option value="Bombillas">Bombillas</option>
+                                <option value="Bolsos">Bolsos</option>
+                                <option value="Yerbas">Yerbas</option>
                             </select>
                         </div>
                     </div>

@@ -23,4 +23,4 @@ export default async function obtenerProductos() {
             reject([]);
         });
     });
-}
+};
