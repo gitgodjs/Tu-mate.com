@@ -18,9 +18,9 @@ export default function Productos() {
             });
     }, []);
     
-    console.log(filtro)
     const prod_filtrados = 
-        filtro != "Todos" ? listaProductos.filter(producto => producto.tipo === filtro) 
+        filtro != "Todos" ? 
+        listaProductos.filter(producto => producto.tipo === filtro) 
         : listaProductos;
     
     

@@ -1,6 +1,5 @@
 import { useState } from "react"
 import ArmarCombo from "../Componentes/Productos/ArmarCombo"
-import Filtros from "../Componentes/Productos/Filtros"
 import Productos from "../Componentes/Productos/Productos"
 
 export default function ProductosPag(){
@@ -23,9 +22,7 @@ export default function ProductosPag(){
             </div>
 
             {verTodo && (
-                <div>
-                    <Productos />
-                </div>
+                <Productos />
             )}
 
             {!verTodo && (

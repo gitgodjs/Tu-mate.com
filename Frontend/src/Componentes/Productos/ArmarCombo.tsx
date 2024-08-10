@@ -3,18 +3,30 @@ import { Producto } from "../../Types/types";
 import obtenerProductos from "./ObtenerProductos"
 
 interface Nom_Producto {
-    prod: string;
+    text: string;
+    precio: number;
 }
 
 export default function ArmarCombo(){
     const [listaProductos, setListaProductos] = useState<Producto[]>([]);
     const [parteCombo, setParteCombo] = useState("Termos");
+    const partes = ["Termos", "Mates", "Bombillas", "Bolsos", "Yerbas", "Completo"];
+    const [historialProductos, setHistorialProductos] = useState<Nom_Producto[]>([]);
 
     const [termo, setTermo] = useState("");
     const [mate, setMate] = useState("");
     const [bombilla, setBombilla] = useState("");
     const [bolso, setBolso] = useState("");
     const [yerba, setYerba] = useState("");
+    const [precioTotal, setPrecioTotal] = useState(0);
+
+    const setParteComboMap: { [key: string]: React.Dispatch<React.SetStateAction<string>> } = {
+        "Termos": setTermo,
+        "Mates": setMate,
+        "Bombillas": setBombilla,
+        "Bolsos": setBolso,
+        "Yerbas": setYerba,
+    };
 
     useEffect(() => {
         obtenerProductos()
@@ -29,39 +41,85 @@ export default function ArmarCombo(){
 
     const filtrarPartes = listaProductos.filter(producto => producto.tipo == parteCombo);
     
-    function agregarCombo(producto: Nom_Producto){
-        console.log(producto)
+    function agregarCombo(producto: Nom_Producto) {
+        const setParte = setParteComboMap[parteCombo];
+    
+        if (setParte) {
+            setParte(prev => `${prev}${producto.text} | `);
+            setPrecioTotal(prev => prev + producto.precio);
+            setHistorialProductos(prev => [...prev, producto]); 
+            avanzarPaso();
+        }
     }
 
-    // MODIFICAR LOGICA PARA QUE SE VAYA ARMANDO EL CODIGO
+    // USAR EL HISTORIAL PARA QUE CUANDO ESTE TERMINADO EL COMBO MOSTRARLO EN PANTALLA
+
+    function avanzarPaso() {
+        const index = partes.indexOf(parteCombo);
+        if (index < partes.length - 1) {
+            setParteCombo(partes[index + 1]);
+        } else {
+            console.log("Todos los pasos completados");
+        }
+    }
+
+    function pasoAtrasCombo() {
+        const index = partes.indexOf(parteCombo);
+    
+        if (index > 0) {
+            const parteAnterior = partes[index - 1]; 
+    
+            const nuevoHistorial = [...historialProductos];
+            const ultimoProducto = nuevoHistorial.pop();
+    
+            if (ultimoProducto) {
+                setPrecioTotal(prev => prev - ultimoProducto.precio);
+                setHistorialProductos(nuevoHistorial); 
+    
+                setParteCombo(parteAnterior);
+    
+                const limpiarParte = setParteComboMap[parteAnterior];
+                if (limpiarParte) {
+                    limpiarParte(""); 
+                }
+            }
+        }
+    }
+
+    function reiniciarPasos(){
+        setParteCombo("Termos"); 
+        setPrecioTotal(0); 
+        setHistorialProductos([]); 
+
+        setTermo("");
+        setMate("");
+        setBombilla("");
+        setBolso("");
+        setYerba("");
+    }
 
     return(
         <div className="grid grid-cols-1 gap-3 p-1">
             <section id="Armar Combo"
             className="grid grid-cols-5"
             >
-                <label className="grid grid-cols-1 justify-items-center text-center cursor-pointer" 
-                onClick={(e) => {setParteCombo(e.target.nextSibling.textContent)}}>
+                <label className="grid grid-cols-1 justify-items-center text-center cursor-pointer" >
                     <img src="https://img.icons8.com/?size=65&id=Gt1ywJsjLOQO&format=png&color=000000"/>
                     <span>Termos</span>
                 </label>
-                <label className="grid grid-cols-1 justify-items-center text-center cursor-pointer"
-                onClick={(e) => {setParteCombo(e.target.nextSibling.textContent)}}>
+                <label className="grid grid-cols-1 justify-items-center text-center cursor-pointer">
                     <img src="https://img.icons8.com/?size=65&id=41483&format=png&color=000000"/>
                     <span>Mates</span>
                 </label>
-                <label className="grid grid-cols-1 justify-items-center text-center cursor-pointer"
-                onClick={(e) => {setParteCombo(e.target.nextSibling.textContent)}}>
+                <label className="grid grid-cols-1 justify-items-center text-center cursor-pointer">
                     <img src="https://img.icons8.com/?size=65&id=Q6Ns02u6z7rD&format=png&color=000000"/>
                     <span>Bombillas</span>
                 </label>
-                <label className="grid grid-cols-1 justify-items-center text-center cursor-pointer"
-                onClick={(e) => {setParteCombo(e.target.nextSibling.textContent)}}>
+                <label className="grid grid-cols-1 justify-items-center text-center cursor-pointer">
                     <img src="https://img.icons8.com/?size=65&id=NaKkLLFlxMDe&format=png&color=000000"/>
                     <span>Bolsos Materos</span>
                 </label>
-                <label className="grid grid-cols-1 justify-items-center text-center cursor-pointer"
-                onClick={(e) => {setParteCombo(e.target.nextSibling.textContent)}}>
+                <label className="grid grid-cols-1 justify-items-center text-center cursor-pointer">
                     <img src="https://img.icons8.com/?size=65&id=ZTZYYl9xsFfB&format=png&color=000000"/>   
                     <span>Yerbas</span>
                 </label>
@@ -75,7 +133,11 @@ export default function ArmarCombo(){
                 </div>
                 <div id="Precio y Boton" className="grid grid-cols-1 items-center gap-2">
                     <div>
-                        <span className="text-center text-xl">Precio total: <span className="font-bold">$49493</span></span>
+                        <span className="text-center text-xl">Precio total: ${precioTotal}</span>
+                    </div>
+                    <div id="botones" className="grid grid-cols-2 gap-5">
+                        <button onClick={pasoAtrasCombo} className="bg-gray-200 rounded-md cursor pointer duration-1000 hover:bg-gray-400">Atras</button>
+                        <button onClick={reiniciarPasos} className="bg-gray-200 rounded-md cursor pointer duration-1000 hover:bg-gray-400">Reiniciar</button>
                     </div>
                     <div className="grid">
                         <button className="border-none text-white font-medium bg-blue-600 text-lg p-1 rounded-md cursor-pointer duration-1000 hover:bg-yellow-400 ">
@@ -101,7 +163,7 @@ export default function ArmarCombo(){
 
                             <div id="Boton" className="grid grid-cols-1 items-center justify-left m-1">
                                 <button className="border-none text-white font-medium bg-blue-600 text-xl p-2 rounded-md cursor-pointer duration-1000 hover:bg-yellow-400 "
-                                onClick={() => agregarCombo(producto)}>
+                                onClick={() => agregarCombo({ text: producto.name, precio: producto.precio })}>
                                 Agregar al combo
                                 </button>
                             </div>
