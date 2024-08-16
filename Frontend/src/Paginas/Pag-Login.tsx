@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navigate, useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { useAuth } from "../Auth/AuthProvider";
 import { AuthResponse } from "../Types/types";
 import { API_URL } from "../Auth/constants";
@@ -19,7 +19,7 @@ export default function LoginPag() {
   const goTo = useNavigate();
   const auth = useAuth();
   if (auth.isAuthenticated) {
-    return <Navigate to="/ProductoUnico" />
+     return goTo('/Productos');
   }
 
   const handleSignInClick = () => {
@@ -111,6 +111,7 @@ export default function LoginPag() {
   
           if (json.body.accessToken && json.body.refreshToken) {
             auth.saveUser(json);
+            return goTo('/Productos');
           }
         } else {
           setUserError("Usuario o contraseña invalidos.")
@@ -120,11 +121,6 @@ export default function LoginPag() {
         console.log(error);
       }
     }
-
-    if (auth.isAuthenticated) {
-      return goTo('/ProductoUnico');
-    }
-    
 
   return (
     <div>

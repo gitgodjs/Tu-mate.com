@@ -26,6 +26,7 @@ export default function ArmarCombo(){
         "Bolsos": setBolso,
         "Yerbas": setYerba,
     };
+   
 
     useEffect(() => {
         obtenerProductos()
@@ -39,32 +40,31 @@ export default function ArmarCombo(){
     }, []);
 
     const filtrarPartes = listaProductos.filter(producto => producto.tipo == parteCombo);
-    
+     const setParte = setParteComboMap[parteCombo];
     function agregarCombo(producto: Nom_Producto) {
-        const setParte = setParteComboMap[parteCombo];
-    
         if (setParte) {
             setParte(prev => `${prev}${producto.text} | `);
             setPrecioTotal(prev => prev + producto.precio);
-            setHistorialProductos(prev => [...prev, producto]); 
-            avanzarPaso();
+            setHistorialProductos(prev => {
+                const nuevoHistorial = [...prev, producto]; 
+                if (parteCombo !== "Yerbas") {
+                    avanzarPaso(); 
+                } else {
+                    console.log("productos listos: ", nuevoHistorial); 
+                }
+                return nuevoHistorial;
+            });
         }
     }
 
-    
-    // RESOLVER PROBLEMA DE ESTE CODIGO (BUCLE INFINITO)
     const partes = ["Termos", "Mates", "Bombillas", "Bolsos", "Yerbas"];
     function avanzarPaso() {
         const i = partes.indexOf(parteCombo);
-    
-        if (i >= 0 && i <= partes.length - 1) {
+
+        if (i >= 0 && i < partes.length - 1) {
             setParteCombo(partes[i + 1]);
-        } else {
-            console.log("productos listos: ", historialProductos);
         }
     }
-    ///////////////////////////////////////////////////
-
 
     function pasoAtrasCombo() {
         const index = partes.indexOf(parteCombo);
