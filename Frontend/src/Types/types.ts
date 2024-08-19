@@ -31,6 +31,7 @@ export interface AccessTokenResponse {
 }
 
 export interface Producto {
+  _id: string;
   id: string; 
   tipo: string;
   name: string;

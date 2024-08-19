@@ -33,7 +33,6 @@ router.post("/", async function (req, res, next) {
         // Responder con el nuevo token de acceso
         res.json(jsonResponse(200, { accessToken }));
     } catch (error) {
-        console.log("Error al procesar el token de actualización:", error);
         return res.status(403).json({ error: "Token de actualización inválido" });
     }
 });

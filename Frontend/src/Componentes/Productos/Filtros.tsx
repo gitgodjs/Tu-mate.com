@@ -5,7 +5,7 @@ interface FiltrosProps {
 
 export default function Filtros( { filtro, orden }:FiltrosProps ) {
   const Prod_list = ["Todos", "Mates", "Bombillas", "Termos", "Bolsos", "Yerbas"];
-  const Orden = ["Cualquiera", "Menos a mayor", "Mayor a menor"];
+  const Orden = ["Cualquiera", "Menor a mayor", "Mayor a menor"];
 
   return (
     <div className="grid grid-cols-1">

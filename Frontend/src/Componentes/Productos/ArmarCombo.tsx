@@ -14,7 +14,10 @@ export default function ArmarCombo(){
     const [listaProductos, setListaProductos] = useState<Producto[]>([]);
     const [parteCombo, setParteCombo] = useState("Termos");
     const [historialProductos, setHistorialProductos] = useState<Nom_Producto[]>([]);
+    
+    // LISTA QUE VOY A MANDAR LUEGO AL CARRITO
     const [comboFinal, setComboFinal] = useState<Nom_Producto[]>([])
+    // LISTA QUE VOY A MANDAR LUEGO AL CARRITO
 
     const [termo, setTermo] = useState("");
     const [mate, setMate] = useState("");
@@ -63,8 +66,6 @@ export default function ArmarCombo(){
             });
         }
     }
-
-    console.log(comboFinal)
 
     const partes = ["Termos", "Mates", "Bombillas", "Bolsos", "Yerbas"];
     function avanzarPaso() {
