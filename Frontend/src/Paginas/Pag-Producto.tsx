@@ -1,5 +1,3 @@
-import Ofertas from "../Componentes/Inicio/Ofertas";
-
 export default function ProductoUnico(){
     return(
         <div>
@@ -23,9 +21,6 @@ export default function ProductoUnico(){
                         <button className="m-1">Agregar al carrito</button>
                     </div>
                 </section>
-            </div>
-            <div className="border-t border-t-1 border-t-gray-400 mt-10">
-                <Ofertas texto={'otros productos'}/>
             </div>
         </div>
         
